@@ -2,6 +2,6 @@
 
 ## Description
 
-Deployed Website:
+Deployed Website: https://kpfranklin22.github.io/group-project-1/
 
 ## Usage
