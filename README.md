@@ -1,4 +1,4 @@
-# Group Project 1 -
+# EverybodyEats
 
 ## Description
 
