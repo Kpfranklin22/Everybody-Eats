@@ -2,6 +2,6 @@
 
 ## Description
 
-Deployed Website: https://kpfranklin22.github.io/group-project-1/
+Deployed Website: https://kpfranklin22.github.io/Everybody-Eats/
 
 ## Usage
