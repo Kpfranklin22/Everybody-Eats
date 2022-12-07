@@ -8,18 +8,17 @@ h1 {
     justify-content: center;
 }
 
-body {
+.center {
     display: flex; 
     flex-direction: column; 
-    justify-content: center;
-    min-height: 100vh;
+    align-items: center;
   }
 
 button {
-    height: 50px;
-    width: 250px;
+    height: min-content, 20%;
+    width: min-content, 30%;
 }
 
 #thumbnail {
-    width: 25%;
+    width: 30%;
   }

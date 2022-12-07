@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    <div class="center">
     <h1>Everybody Eats!</h1>
     <button link="">(*) My Favorites</button>
     <div class="dropdown">
@@ -27,21 +28,21 @@
       >
         Categories
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Beef</a></li>
-        <li><a class="dropdown-item" href="#">Chicken</a></li>
-        <li><a class="dropdown-item" href="#">Dessert</a></li>
-        <li><a class="dropdown-item" href="#">Lamb</a></li>
-        <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
-        <li><a class="dropdown-item" href="#">Pasta</a></li>
-        <li><a class="dropdown-item" href="#">Pork</a></li>
-        <li><a class="dropdown-item" href="#">Seafood</a></li>
-        <li><a class="dropdown-item" href="#">Side</a></li>
-        <li><a class="dropdown-item" href="#">Starter</a></li>
-        <li><a class="dropdown-item" href="#">Vegan</a></li>
-        <li><a class="dropdown-item" href="#">Vegetarian</a></li>
-        <li><a class="dropdown-item" href="#">Breakfast</a></li>
-        <li><a class="dropdown-item" href="#">Goat</a></li>
+      <ul id="categories" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item cat" href="#">Beef</a></li>
+        <li><a class="dropdown-item cat" href="#">Chicken</a></li>
+        <li><a class="dropdown-item cat" href="#">Dessert</a></li>
+        <li><a class="dropdown-item cat" href="#">Lamb</a></li>
+        <li><a class="dropdown-item cat" href="#">Miscellaneous</a></li>
+        <li><a class="dropdown-item cat" href="#">Pasta</a></li>
+        <li><a class="dropdown-item cat" href="#">Pork</a></li>
+        <li><a class="dropdown-item cat" href="#">Seafood</a></li>
+        <li><a class="dropdown-item cat" href="#">Side</a></li>
+        <li><a class="dropdown-item cat" href="#">Starter</a></li>
+        <li><a class="dropdown-item cat" href="#">Vegan</a></li>
+        <li><a class="dropdown-item cat" href="#">Vegetarian</a></li>
+        <li><a class="dropdown-item cat" href="#">Breakfast</a></li>
+        <li><a class="dropdown-item cat" href="#">Goat</a></li>
       </ul>
     </div>
 
@@ -54,35 +55,35 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        select region
+        Select Region
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#"></a>American</li>
-        <li><a class="dropdown-item" href="#"></a>British</li>
-        <li><a class="dropdown-item" href="#"></a>Canadian</li>
-        <li><a class="dropdown-item" href="#"></a>Chinese</li>
-        <li><a class="dropdown-item" href="#"></a>Croatian</li>
-        <li><a class="dropdown-item" href="#"></a>Dutch</li>
-        <li><a class="dropdown-item" href="#"></a>Egyptian</li>
-        <li><a class="dropdown-item" href="#"></a>French</li>
-        <li><a class="dropdown-item" href="#"></a>Greek</li>
-        <li><a class="dropdown-item" href="#"></a>Indian</li>
-        <li><a class="dropdown-item" href="#"></a>Irish</li>
-        <li><a class="dropdown-item" href="#"></a>Italian</li>
-        <li><a class="dropdown-item" href="#"></a>Jamaican</li>
-        <li><a class="dropdown-item" href="#"></a>Japanese</li>
-        <li><a class="dropdown-item" href="#"></a>Kenyan</li>
-        <li><a class="dropdown-item" href="#"></a>Malaysian</li>
-        <li><a class="dropdown-item" href="#"></a>Mexican</li>
-        <li><a class="dropdown-item" href="#"></a>Moroccan</li>
-        <li><a class="dropdown-item" href="#"></a>Polish</li>
-        <li><a class="dropdown-item" href="#"></a>Portuguese</li>
-        <li><a class="dropdown-item" href="#"></a>Russian</li>
-        <li><a class="dropdown-item" href="#"></a>Spanish</li>
-        <li><a class="dropdown-item" href="#"></a>Thai</li>
-        <li><a class="dropdown-item" href="#"></a>Tunisian</li>
-        <li><a class="dropdown-item" href="#"></a>Turkish</li>
-        <li><a class="dropdown-item" href="#"></a>Vietnamese</li>
+      <ul id="regions" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item reg" href="#">American</a></li>
+        <li><a class="dropdown-item reg" href="#">British</a></li>
+        <li><a class="dropdown-item reg" href="#">Canadian</a></li>
+        <li><a class="dropdown-item reg" href="#">Chinese</a></li>
+        <li><a class="dropdown-item reg" href="#">Croatian</a></li>
+        <li><a class="dropdown-item reg" href="#">Dutch</a></li>
+        <li><a class="dropdown-item reg" href="#">Egyptian</a></li>
+        <li><a class="dropdown-item reg" href="#">French</a></li>
+        <li><a class="dropdown-item reg" href="#">Greek</a></li>
+        <li><a class="dropdown-item reg" href="#">Indian</a></li>
+        <li><a class="dropdown-item reg" href="#">Irish</a></li>
+        <li><a class="dropdown-item reg" href="#">Italian</a></li>
+        <li><a class="dropdown-item reg" href="#">Jamaican</a></li>
+        <li><a class="dropdown-item reg" href="#">Japanese</a></li>
+        <li><a class="dropdown-item reg" href="#">Kenyan</a></li>
+        <li><a class="dropdown-item reg" href="#">Malaysian</a></li>
+        <li><a class="dropdown-item reg" href="#">Mexican</a></li>
+        <li><a class="dropdown-item reg" href="#">Moroccan</a></li>
+        <li><a class="dropdown-item reg" href="#">Polish</a></li>
+        <li><a class="dropdown-item reg" href="#">Portuguese</a></li>
+        <li><a class="dropdown-item reg" href="#">Russian</a></li>
+        <li><a class="dropdown-item reg" href="#">Spanish</a></li>
+        <li><a class="dropdown-item reg" href="#">Thai</a></li>
+        <li><a class="dropdown-item reg" href="#">Tunisian</a></li>
+        <li><a class="dropdown-item reg" href="#">Turkish</a></li>
+        <li><a class="dropdown-item reg" href="#">Vietnamese</a></li>
       </ul>
       <span>food!</span>
     </div>
@@ -106,5 +107,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    </div>
   </body>
 </html>
