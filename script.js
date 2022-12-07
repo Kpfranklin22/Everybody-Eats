@@ -9,13 +9,20 @@ var rerollButtonContainer = document.getElementById("reroll");
 var categories = document.getElementById("categories");
 var regions = document.getElementById("regions");
 
-var chosenCategory;
-var chosenRegion;
+var chosenCategory = "";
+var chosenRegion = "";
 const style = document.createElement("style");
 
 style.textContent = `
 body {
   background-color: orange;
+}
+span{
+  color:blue;
+}
+h1{
+  color:blue; 
+  font-size: 72px;
 }
 `;
 
@@ -24,12 +31,14 @@ document.head.appendChild(style);
 categories.addEventListener("click", function (e) {
   if (e.target.classList.contains("cat")) {
     chosenCategory = e.target.innerText;
+    document.getElementById("chosenCat").innerText = chosenCategory;
   }
 });
 
 regions.addEventListener("click", function (e) {
   if (e.target.classList.contains("reg")) {
     chosenRegion = e.target.innerText;
+    document.getElementById("chosenReg").innerText = chosenRegion;
   }
 });
 
@@ -46,13 +55,29 @@ function getRandomMeal() {
       $("#favoriteMealBtn").remove();
       $("#rerollBtn").remove();
       generateRandomMeal(data);
+
     });
+}
+
+
+function saveToFavorites(data) {
+  var savedMeal = data.meals[0].strMeal;
+  
+
+  localStorage.setItem(savedMeal, savedMeal);
+  // localStorage.setItem('value1', 'true');}
 }
 
 function generateRandomMeal(data) {
   var mealCategory = data.meals[0].strCategory;
   var mealRegion = data.meals[0].strArea;
-  if (mealCategory == chosenCategory && mealRegion == chosenRegion) {
+
+  if (
+    (chosenCategory == "" && chosenRegion == "") ||
+    (chosenCategory == "" && chosenRegion == mealRegion) ||
+    (chosenCategory == mealCategory && chosenRegion == "") ||
+    (mealCategory == chosenCategory && mealRegion == chosenRegion)
+  ) {
     var mealName = data.meals[0].strMeal;
     var thumbnailLink = data.meals[0].strMealThumb;
     var youtubeLink = data.meals[0].strYoutube;
@@ -88,8 +113,17 @@ function generateRandomMeal(data) {
     border: 4px double #debb07;`
     );
     scrollBoxContainer.innerHTML = `<h4>Ingredients</h4>`;
+
+    favoriteMealBtn.setAttribute("class", "exists");
     rerollBtn.setAttribute("class", "exists");
     rerollBtn.textContent = "Try Something Different";
+
+    favoriteMealContainer.addEventListener("click", function (e) {
+      if (e.target.classList.contains("exists")) {
+        saveToFavorites(data);
+      }
+    });
+
   } else {
     getRandomMeal();
   }
@@ -100,5 +134,7 @@ rerollButtonContainer.addEventListener("click", function (e) {
     getRandomMeal();
   }
 });
+
+
 
 generateBtn.addEventListener("click", getRandomMeal);
