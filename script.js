@@ -8,6 +8,7 @@ var ingredientsListContainer = document.getElementById("ingredients-list");
 var rerollButtonContainer = document.getElementById("reroll");
 var categories = document.getElementById("categories");
 var regions = document.getElementById("regions");
+var mealId;
 
 var chosenCategory = "";
 var chosenRegion = "";
@@ -54,18 +55,9 @@ function getRandomMeal() {
       $("#youtubeBtn").remove();
       $("#favoriteMealBtn").remove();
       $("#rerollBtn").remove();
+
       generateRandomMeal(data);
-
     });
-}
-
-
-function saveToFavorites(data) {
-  var savedMeal = data.meals[0].strMeal;
-  
-
-  localStorage.setItem(savedMeal, savedMeal);
-  // localStorage.setItem('value1', 'true');}
 }
 
 function generateRandomMeal(data) {
@@ -114,27 +106,40 @@ function generateRandomMeal(data) {
     );
     scrollBoxContainer.innerHTML = `<h4>Ingredients</h4>`;
 
-    favoriteMealBtn.setAttribute("class", "exists");
-    rerollBtn.setAttribute("class", "exists");
-    rerollBtn.textContent = "Try Something Different";
-
-    favoriteMealContainer.addEventListener("click", function (e) {
-      if (e.target.classList.contains("exists")) {
-        saveToFavorites(data);
-      }
-    });
-
+    favoriteMealBtnEl.setAttribute("class", "exists");
+    rerollBtnEl.setAttribute("class", "exists");
+    rerollBtnEl.textContent = "Try Something Different";
+    mealId = data.meals[0].idMeal;
   } else {
     getRandomMeal();
   }
 }
+
+function saveToFavorites() {
+  var mealUrlId =
+    "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId;
+
+  fetch(mealUrlId)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      var savedMeal = data.meals[0].strMeal;
+      localStorage.setItem(savedMeal, savedMeal);
+    });
+}
+
+favoriteMealContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("exists")) {
+    saveToFavorites();
+    console.log("clicked");
+  }
+});
 
 rerollButtonContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("exists")) {
     getRandomMeal();
   }
 });
-
-
 
 generateBtn.addEventListener("click", getRandomMeal);
