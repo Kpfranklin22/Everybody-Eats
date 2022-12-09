@@ -1,3 +1,5 @@
+// Variables
+
 var generateBtn = document.getElementById("generateBtn");
 var mealNameContainer = document.getElementById("meal-name");
 var thumbnailContainer = document.getElementById("thumbnail");
@@ -14,8 +16,9 @@ var mealId;
 
 var chosenCategory = "";
 var chosenRegion = "";
-const style = document.createElement("style");
 
+// Added css styling for headers
+const style = document.createElement("style");
 style.textContent = `
 body {
   background-color: orange;
@@ -28,9 +31,9 @@ h1{
   font-size: 45px;
 }
 `;
-
 document.head.appendChild(style);
 
+// Event listeners for the dropdown menus
 categories.addEventListener("click", function (e) {
   if (e.target.classList.contains("cat")) {
     chosenCategory = e.target.innerText;
@@ -45,6 +48,7 @@ regions.addEventListener("click", function (e) {
   }
 });
 
+// Fetches a random meal from the mealdb API and uses that data to run generateRandomMeal()
 function getRandomMeal() {
   var mealURL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
@@ -64,6 +68,10 @@ function getRandomMeal() {
     });
 }
 
+// First checks if the generated meal meets the requirements selected from the dropdown menus. Then creates
+// and positions the elements to display the meal name, a picture of the meal and a link to a youtube recipe.
+// In the display, a "reroll" button and favorites button are added
+
 function generateRandomMeal(data) {
   var mealCategory = data.meals[0].strCategory;
   var mealRegion = data.meals[0].strArea;
@@ -74,6 +82,7 @@ function generateRandomMeal(data) {
     (chosenCategory == mealCategory && chosenRegion == "") ||
     (mealCategory == chosenCategory && mealRegion == chosenRegion)
   ) {
+    //removes the loading icon
     $("#icon-GIF").remove();
     $("#loading-text").remove();
 
@@ -103,7 +112,7 @@ function generateRandomMeal(data) {
     rerollBtnEl.setAttribute("id", "rerollBtn");
 
     youtubeBtnEl.innerHTML =
-      " <a href= " +
+      " <a target='_blank' href= " +
       youtubeLink +
       '><img src="images/youtubelogo.png" height="50"/></a>';
     favoriteMealBtn.textContent = "Favorite This Meal";
@@ -111,8 +120,13 @@ function generateRandomMeal(data) {
     favoriteMealBtnEl.setAttribute("class", "exists btn btn-danger");
     rerollBtnEl.setAttribute("class", "exists btn btn-danger");
     rerollBtnEl.textContent = "Try Something Different";
+
+    // Grabs the mealID number for reference in the saveToFavorites function
     mealId = data.meals[0].idMeal;
+
   } else {
+
+    // Displays a loading GIF while the function iterates through random meals
     var iconEl = document.createElement("img");
     iconEl.setAttribute("id", "icon-GIF");
     iconEl.setAttribute(
@@ -121,7 +135,7 @@ function generateRandomMeal(data) {
     );
     var loadingTextEl = document.createElement("h1");
     loadingTextEl.setAttribute("id", "loading-text");
-    loadingTextEl.textContent = "Loading...";
+    loadingTextEl.textContent = "Cooking something up...";
 
     if (loadingIconContainer.childNodes.length === 0) {
       loadingIconContainer.appendChild(loadingTextEl);
@@ -131,6 +145,8 @@ function generateRandomMeal(data) {
   }
 }
 
+// Takes the mealID from the currently displayed meal and uses it to reference that meal from
+// the mealdb API and saves to an array for local storage
 function saveToFavorites() {
   var mealUrlId =
     "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId;
@@ -148,9 +164,12 @@ function saveToFavorites() {
     });
 }
 
+// Variables for local storage
 var favoritesContainer = document.getElementById("favorites-dropdown");
 var favoritesList = [];
 
+// Displays the saved meals from the local storage array in a dropdown with the option to
+// remove from the array
 function displayFavorites() {
   favoritesContainer.innerHTML = "";
 
@@ -169,6 +188,7 @@ function displayFavorites() {
   }
 }
 
+// Re-saves the favoritesList array from local storage
 function init() {
   var storedFavorites = JSON.parse(localStorage.getItem("favoritesList"));
   if (storedFavorites !== null) {
@@ -176,6 +196,7 @@ function init() {
   }
 }
 
+// Event Listener for the favorites dropdown menu remove button
 favoritesDropdown.addEventListener("click", function (e) {
   var element = e.target;
   if (element.classList.contains("btn") === true) {
@@ -185,10 +206,10 @@ favoritesDropdown.addEventListener("click", function (e) {
   }
 });
 
+// Event listeners for the save to favorites and reroll buttons
 favoriteMealContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("exists")) {
     saveToFavorites();
-    console.log("clicked");
   }
 });
 
@@ -200,5 +221,6 @@ rerollButtonContainer.addEventListener("click", function (e) {
 
 init();
 
+// Event listeners for the find a meal and favorites dropdown display
 favoritesBtn.addEventListener("click", displayFavorites);
 generateBtn.addEventListener("click", getRandomMeal);

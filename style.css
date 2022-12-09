@@ -2,21 +2,24 @@
     box-sizing: border-box;
 }
 
+/* Added font family for header */
 h1 {
     font-family: 'Permanent Marker';
 }
 
-
+/* Added styling for loading icon */
 .icon{
     width: 50%;
     padding-top: 2em;
 }
 
+/* Added button styling  */
 button {
     height: min-content, 20%;
     width: min-content, 30%;
 }
 
+/* Centered web app and added padding for clean styling */
 .center {
     display: flex; 
     flex-direction: column; 
@@ -32,6 +35,7 @@ button {
     padding: 2vh;
 }
 
+/* Added size to thumbnail for consistency */
 #thumbnail {
     width: 35%;
   }
