@@ -26,9 +26,18 @@
   <body>
     <div class="center">
       <h1>Everybody Eats!</h1>
-      <button link="" class="btn-danger btn-sm">
+
+      <button
+        class="btn-danger btn-sm dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        link=""
+        id="favorites-button"
+      >
         <i class="fa-solid fa-star"></i> My Favorites
       </button>
+
+      <ul class="dropdown-menu" id="favorites-dropdown"></ul>
       <div class="dropdown">
         <span>What are feeling today?</span>
 
@@ -112,14 +121,12 @@
 
       <button id="generateBtn" class="btn-danger btn-lg">Find a Meal!</button>
 
-      <h2 id="meal-name"></h2>
-      <img id="thumbnail" src="" />
+      <div class="icon center" id="loading-icon"></div>
+
+      <div id="meal-name"></div>
+      <div class="center" id="thumbnail"></div>
       <div id="youtube-link"></div>
       <div id="favorite-meal"></div>
-
-      <div id="scroll-box">
-        <ul id="ingredients-list" style="list-style-type: none"></ul>
-      </div>
 
       <div id="reroll"></div>
       <script src="script.js"></script>

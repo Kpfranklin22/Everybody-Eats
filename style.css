@@ -6,6 +6,12 @@ h1 {
     font-family: 'Permanent Marker';
 }
 
+
+.icon{
+    width: 50%;
+    padding-top: 2em;
+}
+
 button {
     height: min-content, 20%;
     width: min-content, 30%;
